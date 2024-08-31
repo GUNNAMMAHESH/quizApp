@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>quiz app</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <h1 id="error"></h1>
+    <div id="start-game">
+      <h1>start quiz</h1>
+      <h3>Enter player Details</h3>
+      <div>
+        <h4 id="player1">player1</h4>
+        <input id="player1-name" type="text" />
+        <h4 id="player2">player2</h4>
+        <input id="player2-name" type="text" />
+      </div>
+      <button onclick="startGame()">continue</button>
+    </div>
+
+    <div id="select-category">
+      <h2>select category</h2>
+      <ui id="list"></ui>
+    </div>
+
+    <div id="start-quiz">
+      <h2>play</h2>
+        <div id="currentPlayer"></div>
+        <div id="currentLevel"></div>
+        <div id="question"></div>
+        <div id="answer"></div>
+        <button>Next</button>
+    </div>
+
+    <div id="result-div">
+      <div id="score"></div>
+      <div id="winner"></div>
+      <div id="next">
+        <button id="continue">continue</button>
+        <button id="restart">restart</button>
+      </div>
+    </div>
+  </body>
+</html>
