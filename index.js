@@ -47,9 +47,12 @@ async function fetchCategory() {
 const startGame = async () => {
   playerInfo();
   await fetchCategory();
+  console.log("one completed");
+  
 };
 
 async function fetchQuestion() {
+  console.log("two completed");
   if (currentDifficultyIndex >= difficulty.length) {
     return endGame();
   } else {
@@ -57,7 +60,9 @@ async function fetchQuestion() {
     document.getElementById("currentLevel").innerText =
       difficulty[currentDifficultyIndex];
     const response = await fetch(
-      `https://the-trivia-api.com/v2/questions?difficulties=${difficulty[currentDifficultyIndex]}&categories=${encodeURIComponent(categoryItem)}&limit=1`
+      `https://the-trivia-api.com/v2/questions?difficulties=${
+        difficulty[currentDifficultyIndex]
+      }&categories=${encodeURIComponent(categoryItem)}&limit=1`
     );
     const question = await response.json();
     let answers = [];
@@ -123,23 +128,30 @@ const result = () => {
 
 const endGame = () => {
   document.getElementById("start-quiz").style.display = "none";
-  document.getElementById("result-div").style.display = "block"
+  document.getElementById("result-div").style.display = "block";
   console.log("GameOver");
-  
-  result();
-  const value = document.getElementById('next').style.display = "block";
-  continueGame();
 
+  result();
+  const value = (document.getElementById("next").style.display = "block");
+  continueGame();
 };
 
 const continueGame = () => {
-  document.getElementById("restart").addEventListener("click",()=>{
-location.reload()
-  })
-  
-  // fetchedCategory = fetchedCategory.filter(item => item !== categoryItem);
-  // console.log(fetchedCategory);
+  document.getElementById("restart").addEventListener("click", () => {
+    location.reload();
+  });
+
+  // Object.keys(fetchedCategory).forEach((ele)=>{
+  //   if(ele === categoryItem){
+  //     delete fetchedCategory.categoryItem
+  //   }
+  //   // console.log(ele);
+  //   // console.log("categoryItem",categoryItem);
+
+  // })
+  // delete fetchedCategory[categoryItem];
+  console.log(fetchedCategory);
+  document.getElementById("result-div").style.display = "none";
+
+  startGame();
 };
-
-
-
